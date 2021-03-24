@@ -18,3 +18,5 @@ Remotes:
     lorenzwalthert/touchstone
 Suggests:
     touchstone
+URL: https://github.com/lorenzwalthert/touchstone.test
+BugReports: https://github.com/lorenzwalthert/touchstone.test/issues
