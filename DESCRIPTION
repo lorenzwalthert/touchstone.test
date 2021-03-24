@@ -17,6 +17,7 @@ RoxygenNote: 7.1.1
 Remotes: 
     lorenzwalthert/touchstone
 Suggests:
-    touchstone
+    touchstone, 
+    dplyr
 URL: https://github.com/lorenzwalthert/touchstone.test
 BugReports: https://github.com/lorenzwalthert/touchstone.test/issues
