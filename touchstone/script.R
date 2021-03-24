@@ -1,18 +1,20 @@
-# touchstone:::touchstone_clear() # deletes itself and sources
-refs <- c(Sys.getenv("GITHUB_BASE_REF", "touchstone"), Sys.getenv("GITHUB_HEAD_REF", "touchstone"))
+refs <- c(
+  Sys.getenv("GITHUB_BASE_REF", "touchstone"),
+  Sys.getenv("GITHUB_HEAD_REF", "touchstone")
+)
 
 timer <- purrr::partial(touchstone::benchmark_run_ref,
-                        refs = refs, n = 10
+  refs = refs, n = 2
 )
 
 timer(
   expr_before_benchmark = c("print(4)"),
-  expr1 = 'tail(mtcars)'
+  expr1 = "tail(mtcars)"
 )
 
 timer(
   expr_before_benchmark = c("print(4)"),
-  expr2 = 'head(mtcars)'
+  expr2 = "head(mtcars)"
 )
 
 for (benchmark in touchstone::benchmark_ls()) {
@@ -34,7 +36,10 @@ for (benchmark in touchstone::benchmark_ls()) {
 
   diff_percent <- round(100 * (tbl[refs[2]] - tbl[refs[1]]) / tbl[refs[1]], 1)
   cat(
-    glue::glue("{benchmark}: {round(tbl[refs[1]], 2)} -> {round(tbl[refs[2]], 2)} ({diff_percent}%)"),
+    glue::glue(
+      "{benchmark}: {round(tbl[refs[1]], 2)} -> {round(tbl[refs[2]], 2)} ",
+      "({diff_percent}%)"
+    ),
     fill = TRUE,
     file = "touchstone/pr-comment/info.txt",
     append = TRUE

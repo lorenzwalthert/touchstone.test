@@ -8,16 +8,20 @@ Authors@R:
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+URL: https://github.com/lorenzwalthert/touchstone.test
+BugReports: https://github.com/lorenzwalthert/touchstone.test/issues
+Suggests:
+    dplyr,
+    fs,
+    glue,
+    purrr,
+    tibble,
+    touchstone
+Remotes: 
+    lorenzwalthert/touchstone
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Remotes: 
-    lorenzwalthert/touchstone
-Suggests:
-    touchstone, 
-    dplyr
-URL: https://github.com/lorenzwalthert/touchstone.test
-BugReports: https://github.com/lorenzwalthert/touchstone.test/issues
