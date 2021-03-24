@@ -1,6 +1,6 @@
 refs <- c(
-  Sys.getenv("GITHUB_BASE_REF", "touchstone"),
-  Sys.getenv("GITHUB_HEAD_REF", "touchstone")
+  Sys.getenv("GITHUB_BASE_REF", "master"),
+  Sys.getenv("GITHUB_HEAD_REF", "master")
 )
 
 timer <- purrr::partial(touchstone::benchmark_run_ref,
