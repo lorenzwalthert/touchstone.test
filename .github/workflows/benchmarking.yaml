@@ -6,11 +6,13 @@ jobs:
     outputs:
       config: ${{ steps.read_touchstone_config.outputs.config }}
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+           fetch-depth: 0
+
       - id: read_touchstone_config
         run: |
-          pwd
-          ls
-          ls touchstone
           content=`cat ./touchstone/config.json`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
@@ -32,10 +34,6 @@ jobs:
       BENCHMARKING_REF: "ca9c8e69c727def88d8ba1c8b85b0e0bcea87b3f"
       BENCHMARKING_PATH: "touchstone/sources/here"
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-           fetch-depth: 0
       - name: Set up git user
         run: |
           git config --local user.name "GitHub Actions"
