@@ -26,7 +26,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        - ${{ fromJson(needs.prepare.outputs.config) }}
+        config:
+          - ${{ fromJson(needs.prepare.outputs.config) }}
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.rspm }}
