@@ -12,15 +12,10 @@ License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 URL: https://github.com/lorenzwalthert/touchstone.test
 BugReports: https://github.com/lorenzwalthert/touchstone.test/issues
-Suggests:
-    dplyr,
-    fs,
-    glue,
-    purrr,
-    tibble,
+Imports:
     touchstone
 Remotes: 
-    lorenzwalthert/touchstone
+    lorenzwalthert/touchstone@devel
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
