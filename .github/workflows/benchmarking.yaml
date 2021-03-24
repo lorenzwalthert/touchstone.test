@@ -1,18 +1,10 @@
 name: Continuous Benchmarks
 on: pull_request
 jobs:
-  build:
-    runs-on: ${{ matrix.config.os }}
-    strategy:
-      fail-fast: false
-      matrix: ${{fromJson(steps.read_touchstone_config.outputs.config)}}
-    env:
-      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      RSPM: ${{ matrix.rspm }}
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      BENCHMARKING_REPO: "lorenzwalthert/here"
-      BENCHMARKING_REF: "ca9c8e69c727def88d8ba1c8b85b0e0bcea87b3f"
-      BENCHMARKING_PATH: "touchstone/sources/here"
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      config: ${{ steps.read_touchstone_config.outputs.config }}
     steps:
       - id: read_touchstone_config
         run: |
@@ -23,6 +15,20 @@ jobs:
           content="${content//$'\r'/'%0D'}"
           # end of optional handling for multi line json
           echo "::set-output name=config::$content"
+  build:
+    needs: prepare
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.prepare.outputs.config)}}
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      RSPM: ${{ matrix.rspm }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      BENCHMARKING_REPO: "lorenzwalthert/here"
+      BENCHMARKING_REF: "ca9c8e69c727def88d8ba1c8b85b0e0bcea87b3f"
+      BENCHMARKING_PATH: "touchstone/sources/here"
+    steps:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
