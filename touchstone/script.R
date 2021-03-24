@@ -1,13 +1,15 @@
-timer(
+library(touchstone)
+
+benchmark_run_ref(
   expr_before_benchmark = c("print(4)"),
   expr1 = "tail(mtcars)",
   n = 2
 )
 
-timer(
+benchmark_run_ref(
   expr_before_benchmark = c("print(4)"),
   expr2 = "head(mtcars)",
   n = 2
 )
 
-touchstone::benchmarks_analyse()
+benchmarks_analyse()
