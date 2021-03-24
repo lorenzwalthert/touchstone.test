@@ -8,6 +8,7 @@ jobs:
     steps:
       - id: read_touchstone_config
         run: |
+          pwd
           content=`cat ./touchstone/config.json`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
