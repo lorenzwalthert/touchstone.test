@@ -1,10 +1,5 @@
 library(touchstone)
 
-touchstone_clear()
-if (rlang::is_installed("touchstone.test")) {
-  rlang::abort("how can the package already be installed?")
-}
-
 benchmark_run_ref(
   expr_before_benchmark = c("print(4)"),
   expr1 = "tail(mtcars)",
