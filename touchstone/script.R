@@ -11,7 +11,7 @@ benchmark_run_ref(
 benchmark_run_ref(
   expr_before_benchmark = c("print(4)"),
   expr2 = "head(mtcars)",
-  n = 2
+  n = 3
 )
 
 benchmarks_analyze()
