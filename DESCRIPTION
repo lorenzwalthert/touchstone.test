@@ -17,7 +17,7 @@ Imports:
 Suggests: 
     rlang
 Remotes: 
-    lorenzwalthert/touchstone@devel
+    lorenzwalthert/touchstone@main
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
