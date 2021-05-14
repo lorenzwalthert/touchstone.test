@@ -91,7 +91,7 @@ jobs:
           mkdir -p touchstone/sources
           mkdir -p touchstone/pr-comment
           mkdir -p touchstone/plots
-          echo "Here is how benchmark results changed if $(git rev-parse HEAD) (and ancestors) is merged into $GITHUB_BASE_REF:" > touchstone/pr-comment/info.txt
+          echo "Here is how benchmark results changed (along with a 95% confience interval in relative change) if $(git rev-parse HEAD) and ancestors were merged into $GITHUB_BASE_REF:" > touchstone/pr-comment/info.txt
           echo "$GITHUB_EVENT_PULL_REQUEST_HEAD_SHA" >> touchstone/pr-comment/info.txt
       - name: Run benchmarks
         run: Rscript -e 'touchstone::with_touchstone_lib("touchstone/script.R")'
