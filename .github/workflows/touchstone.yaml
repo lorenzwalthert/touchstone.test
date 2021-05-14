@@ -1,5 +1,5 @@
 name: Continuous Benchmarks
-on: pull_request
+on: pull_request_target
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -80,3 +80,11 @@ jobs:
             cat('removed package ', pkg, '.', sep = "")
           }
         shell: Rscript {0}
+      - name: c/p text artifact to right location
+        run: |
+          mv touchstone/pr-comment/info.txt workflows/info.txt
+      - uses: harupy/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: info.txt
