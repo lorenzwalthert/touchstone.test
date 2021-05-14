@@ -110,7 +110,11 @@ jobs:
         run: cat touchstone/pr-comment/info.txt
       - name: c/p text artifact to right location
         run: |
-          mv touchstone/pr-comment/info.txt workflows/info.txt
+          pwd #
+          ls
+          ls -aR touchstone
+          ls -a .github
+          mv touchstone/pr-comment/info.txt .github/workflows/info.txt
       - uses: harupy/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
