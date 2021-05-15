@@ -15,6 +15,7 @@ eval
 fromJson
 fs
 gcc
+gert
 getRversion
 ggplot
 github
