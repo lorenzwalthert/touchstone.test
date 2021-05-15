@@ -38,6 +38,8 @@ jobs:
       - run: unzip pr.zip
       - name: c/p text artifact to right location
         run: |
+          pwd
+          mkdir -p .github/workflows/
           mv ./info.txt .github/workflows/info.txt
       - uses: harupy/comment-on-pr@master
         env:
