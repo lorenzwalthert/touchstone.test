@@ -43,9 +43,10 @@ jobs:
           script: |
             var fs = require('fs');
             var issue_number = Number(fs.readFileSync('./NR'));
+            var body = fs.readFileSync('./NR').toString();
             await github.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue_number,
-              body: "Hi there"
+              body: body
             });
