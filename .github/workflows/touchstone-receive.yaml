@@ -100,6 +100,9 @@ jobs:
           path: ${{ matrix.config.benchmarking_path }}
       - name: Run benchmarks
         run: Rscript -e 'touchstone::with_touchstone_lib("touchstone/script.R")'
+      - name: Save PR number
+        run: |
+          echo ${{ github.event.number }} > ./touchstone/pr-comment/NR
       - uses: actions/upload-artifact@v2
         with:
           name: visual-benchmarks

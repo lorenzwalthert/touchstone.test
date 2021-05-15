@@ -36,13 +36,17 @@ jobs:
             var fs = require('fs');
             fs.writeFileSync('${{github.workspace}}/pr.zip', Buffer.from(download.data));
       - run: unzip pr.zip
-      - name: c/p text artifact to right location
-        run: |
-          pwd
-          mkdir -p .github/workflows/
-          mv ./info.txt .github/workflows/info.txt
-      - uses: harupy/comment-on-pr@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Comment on PR'
+        uses: actions/github-script@v3
         with:
-          filename: info.txt
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            var fs = require('fs');
+            var issue_number = Number(fs.readFileSync('./NR'));
+            var body = fs.readFileSync('./info.txt')
+            await github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number,
+              body: body
+            });
