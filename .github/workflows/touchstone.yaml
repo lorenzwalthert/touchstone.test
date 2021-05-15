@@ -43,6 +43,11 @@ jobs:
           git config --local user.email "actions@github.com"
       - name: Ensure base branch is fetched
         run: |
+          echo 'log'
+          git log
+          echo 'status'
+          git status
+          echo 'branch'
           git branch # list branches
           echo 'all branches'
           git branch -va
