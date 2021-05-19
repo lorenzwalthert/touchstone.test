@@ -16,12 +16,13 @@ wait_long_for_head <- function(wait) {
 
 install_use_push <- function() {
   if (nrow(gert::git_status()) > 0) {
-    rlang::abort('must have clean git dir to start process')
+    rlang::abort("must have clean git dir to start process")
   }
-  remotes::install_github('lorenzwalthert/touchstone')
+  remotes::install_github("lorenzwalthert/touchstone")
   fs::file_delete(
-    fs::dir_ls('.github/workflows/', regexp = '(touchstone|cancel).*\\.yaml')
+    fs::dir_ls(".github/workflows/", regexp = "(touchstone|cancel).*\\.yaml")
   )
   touchstone::use_touchstone()
-  gert::git_commit_all('use latest scripts')
+  gert::git_commit_all("use latest scripts")
+  gert::git_push()
 }

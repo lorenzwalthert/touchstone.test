@@ -1,5 +1,5 @@
 # https://github.com/styfle/cancel-workflow-action
-name: Cancel
+name: Cancelshi
 on:
   workflow_run:
     workflows: ["Continuous Benchmarks (Comment)", "Continuous Benchmarks (Receive)"] # list by name as in `name:` of the workflow file
