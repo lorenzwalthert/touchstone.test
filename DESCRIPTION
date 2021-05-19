@@ -13,7 +13,9 @@ License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
 URL: https://github.com/lorenzwalthert/touchstone.test
 BugReports: https://github.com/lorenzwalthert/touchstone.test/issues
 Imports: 
+    fs,
     gert,
+    remotes,
     touchstone
 Suggests: 
     rlang
