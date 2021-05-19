@@ -14,6 +14,7 @@ wait_long_for_head <- function(wait) {
   }
 }
 
+# Convenience function to run full testing
 install_use_push <- function() {
   if (nrow(gert::git_status()) > 0) {
     rlang::abort("must have clean git dir to start process")
@@ -22,7 +23,9 @@ install_use_push <- function() {
   fs::file_delete(
     fs::dir_ls(".github/workflows/", regexp = "(touchstone|cancel).*\\.yaml")
   )
-  touchstone::use_touchstone()
+  # old version might be loaded
+  callr::r(function() touchstone::use_touchstone())
   gert::git_commit_all("use latest scripts")
   gert::git_push()
+  usethis::ui_done("Pushed new changes")
 }

@@ -4,6 +4,7 @@ bcea
 benchmarking
 BENCHMARKING
 BugReports
+callr
 CMD
 config
 cre
@@ -56,4 +57,5 @@ sysreq
 sysreqs
 tibble
 ubuntu
+usethis
 writeLines
