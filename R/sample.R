@@ -15,11 +15,11 @@ wait_long_for_head <- function(wait) {
 }
 
 # Convenience function to run full testing
-install_use_push <- function() {
+install_use_push <- function(ref = "master") {
   if (nrow(gert::git_status()) > 0) {
     rlang::abort("must have clean git dir to start process")
   }
-  remotes::install_github("lorenzwalthert/touchstone")
+  remotes::install_github(paste0("lorenzwalthert/touchstone@", ref))
   fs::file_delete(
     fs::dir_ls(".github/workflows/", regexp = "(touchstone|cancel).*\\.yaml")
   )
