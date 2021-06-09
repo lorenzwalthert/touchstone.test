@@ -15,7 +15,7 @@ wait_long_for_head <- function(wait) {
 }
 
 # Convenience function to run full testing
-install_use_push <- function(ref = "master") {
+install_use_push <- function(ref = "main") {
   if (nrow(gert::git_status()) > 0) {
     rlang::abort("must have clean git dir to start process")
   }
