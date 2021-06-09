@@ -25,6 +25,7 @@ install_use_push <- function(ref = "main") {
   )
   # old version might be loaded
   callr::r(function() touchstone::use_touchstone())
+  system2("git", c("add", "."))
   system2("git", c("commit", "-m", "use latest scripts", "--allow-empty"))
   gert::git_push()
   usethis::ui_done("Pushed new changes")
