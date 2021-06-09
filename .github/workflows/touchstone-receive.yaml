@@ -72,7 +72,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_github("lorenzwalthert/touchstone@rc-0.1.0")
+          remotes::install_github("lorenzwalthert/touchstone@main")
           remotes::install_cran(c('ggplot2', 'dplyr'))
           pkg <- basename(getwd())
           if (pkg %in% rownames(installed.packages())) {
