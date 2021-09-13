@@ -17,7 +17,6 @@ Imports:
     fs,
     gert,
     remotes,
-    touchstone,
     usethis
 Suggests: 
     rlang
