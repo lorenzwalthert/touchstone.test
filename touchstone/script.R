@@ -1,4 +1,4 @@
-Sys.setenv(GITHUB_BASE_REF = "master", GITHUB_HEAD_REF = "test")
+# local testing Sys.setenv(GITHUB_BASE_REF = "master", GITHUB_HEAD_REF = "test")
 library(touchstone)
 
 refs_install()
