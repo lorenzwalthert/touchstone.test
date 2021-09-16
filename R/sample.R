@@ -4,8 +4,10 @@ wait_long_for_head <- function(wait) {
   base <- touchstone:::ref_get_or_fail("GITHUB_BASE_REF")
   head <- touchstone:::ref_get_or_fail("GITHUB_HEAD_REF")
   if (gert::git_branch() == head) {
+    print(paste0("on branch ", head, ", sleeping for ", wait, " seconds."))
     Sys.sleep(wait)
   } else if (gert::git_branch() == base) {
+    print(paste0("on branch ", base, ", sleeping for ", "0 seconds."))
     Sys.sleep(0)
   } else {
     rlang::abort(
