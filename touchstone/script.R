@@ -4,7 +4,7 @@ library(touchstone)
 refs_install()
 
 benchmark_run_ref(
-  expr1 = c("touchstone.test::wait_long_for_head(4)"),
+  expr1 = touchstone.test::wait_long_for_head(4),
   n = 3
 )
 
