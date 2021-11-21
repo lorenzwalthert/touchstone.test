@@ -16,7 +16,6 @@ Imports:
     glue,
     magrittr,
     remotes,
-    touchstone,
     usethis
 Suggests: 
     rlang
