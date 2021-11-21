@@ -16,7 +16,9 @@ wait_long_for_head <- function(wait) {
   }
 }
 
-# Convenience function to run full testing
+#' Convenience function to run full testing
+#' @importFrom magrittr %>%
+#' @keywords internal
 install_use_push <- function(ref = "main") {
   if (nrow(gert::git_status()) > 0) {
     rlang::abort("must have clean git dir to start process")
@@ -29,12 +31,13 @@ install_use_push <- function(ref = "main") {
   callr::r(function() touchstone::use_touchstone())
   system2(
     "sed", c(
-      "-i", "-e",
+      "-e",
       '"s/lorenzwalthert\\/touchstone.*/lorenzwalthert\\/touchstone$R_TOUCHSTONE_TEST_REF/g"',
       ".github/workflows/touchstone-receive.yaml"
     ),
     env = paste0("R_TOUCHSTONE_TEST_REF=", ref, ";")
   )
+  fs::file_delete(".github/workflows/touchstone-receive.yaml-e")
   system2("git", c("add", "."))
   system2("git", c("commit", "-m", "'use latest scripts'", "--allow-empty"))
   gert::git_push()
