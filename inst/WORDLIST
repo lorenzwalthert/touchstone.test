@@ -30,6 +30,7 @@ libgit
 LIBS
 linux
 lorenzwalthert
+magrittr
 mit
 mkdir
 openssl

@@ -1,14 +1,15 @@
+# local testing Sys.setenv(GITHUB_BASE_REF = "master", GITHUB_HEAD_REF = "test")
 library(touchstone)
 
 refs_install()
 
 benchmark_run_ref(
-  expr1 = c("touchstone.test::wait_long_for_head(4)"),
+  expr1 = touchstone.test::wait_long_for_head(4),
   n = 3
 )
 
 benchmark_run_ref(
-  expr2 = "Sys.sleep(1)",
+  expr2 = Sys.sleep(1),
   n = 3
 )
 
