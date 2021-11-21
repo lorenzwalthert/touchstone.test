@@ -1,3 +1,4 @@
 ^touchstone\.test\.Rproj$
 ^\.Rproj\.user$
 ^\.pre-commit-config\.yaml$
+^touchstone$
