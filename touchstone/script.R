@@ -9,7 +9,7 @@ benchmark_run_ref(
 )
 
 benchmark_run_ref(
-  expr2 = "Sys.sleep(1)",
+  expr2 = Sys.sleep(1),
   n = 3
 )
 
